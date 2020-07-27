@@ -1,0 +1,301 @@
+(set-language-environment 'Chinese-GB)
+(set-keyboard-coding-system 'utf-8)
+(set-clipboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-selection-coding-system 'utf-8)
+(modify-coding-system-alist 'process "*" 'utf-8)
+(setq default-process-coding-system '(utf-8 . utf-8))
+(setq-default pathname-coding-system 'utf-8)
+(set-file-name-coding-system 'utf-8)
+(setq ansi-color-for-comint-mode t)
+
+(global-hl-line-mode t)
+(ido-mode t)
+(set-background-color "gray20")
+(set-foreground-color "wheat")
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+(global-linum-mode t)
+
+(set-scroll-bar-mode nil)
+
+(setq kill-ring-max 200)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(cua-mode t nil (cua-base))
+ '(display-time-mode t)
+ '(inhibit-startup-screen t)
+ '(menu-bar-mode nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
+
+(setq default-frame-alist
+             '((vertical-scroll-bars)
+               (set-background-color "gray20")
+               (set-foreground-color "wheat")
+               (tool-bar-mode -1)
+               (scroll-bar-mode -1)
+               (menu-bar-mode -1)
+               (right-fringe)
+               (left-fringe)))
+
+;;(set-face-foreground 'highlight "white")
+;;(set-face-background 'highlight "blue")
+(set-face-foreground 'region "cyan")
+(set-face-background 'region "blue")
+;;(set-face-foreground 'secondary-selection "skyblue")
+;;(set-face-background 'secondary-selection "darkblue")
+
+(display-time-mode 1);;启用时间显示设置，在minibuffer上面的那个杠上
+(setq display-time-24hr-format t);;时间使用24小时制
+(setq display-time-day-and-date t);;时间显示包括日期和具体时间
+(setq display-time-use-mail-icon t);;时间栏旁边启用邮件设置
+(setq display-time-interval 10);;时间的变化频率，单位多少来着？
+
+
+;;设置打开文件的缺省路径
+(setq default-directory "~/")
+
+;;ido的配置,这个可以使你在用C-x C-f打开文件的时候在后面有提示;
+;;这里是直接打开了ido的支持，在emacs23中这个是自带的.
+(ido-mode t)
+
+(setq ido-save-directory-list-file nil)
+;;ido模式中不保存目录列表,解决退出Emacs时ido要询问编码的问题。
+
+(setq visible-bell t)
+;;关闭烦人的出错时的提示声
+
+(setq inhibit-startup-message t)
+;;关闭emacs启动时的画面
+
+(setq gnus-inhibit-startup-message t)
+;;关闭gnus启动时的画面
+
+(setq font-lock-maximum-decoration t)
+(setq font-lock-global-modes '(not shell-mode text-mode))
+(setq font-lock-verbose t)
+(setq font-lock-maximum-size '((t . 1048576) (vm-mode . 5250000)))
+;; 语法高亮。除 shell-mode 和 text-mode 之外的模式中使用语法高亮。
+
+(setq column-number-mode t)
+(setq line-number-mode t)
+;;显示行列号
+(global-linum-mode t)
+
+(setq kill-ring-max 200)
+;;设置粘贴缓冲条目数量.用一个很大的kill ring(最多的记录个数). 这样防止我不小心删掉重要的东西
+
+(setq-default auto-fill-function 'do-auto-fill)
+ ; Autofill in all modes;;
+(setq default-fill-column 120)
+;;把 fill-column 设为 60. 这样的文字更好读
+
+(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4) 
+(setq default-tab-width 4);;tab键为4个字符宽度
+(setq tab-stop-list ())
+;;不用 TAB 字符来indent, 这会引起很多奇怪的错误。编辑 Makefile 的时候也不用担心，因为 makefile-mode 会把 TAB 键设置成真正的 TAB 字符，并且加亮显示的。
+
+(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end-double-space nil)
+
+(setq enable-recursive-minibuffers t)
+;;可以递归的使用 minibuffer
+
+(setq scroll-margin 3 scroll-conservatively 10000)
+;;防止页面滚动时跳动， scroll-margin 3 可以在靠近屏幕边沿3行时就开始滚动，可以很好的看到上下文。
+
+(setq default-major-mode 'text-mode)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;设置缺省主模式是text，,并进入auto-fill次模式.而不是基本模式fundamental-mode
+
+(show-paren-mode t)
+;;打开括号匹配显示模式
+
+(setq show-paren-style 'parenthesis)
+;;括号匹配时可以高亮显示另外一边的括号，但光标不会烦人的跳到另一个括号处。
+
+(setq frame-title-format "emacs@%b@赖睿航@MasterJH5574")
+;;在标题栏显示buffer的名字，而不是 emacs@wangyin.com 这样没用的提示。
+
+(setq uniquify-buffer-name-style 'forward);;好像没起作用
+;; 当有两个文件名相同的缓冲时，使用前缀的目录名做 buffer 名字，不用原来的foobar 形式。
+
+(setq global-font-lock-mode t)
+;;进行语法加亮。
+
+(setq-default kill-whole-line t)
+;; 在行首 C-k 时，同时删除该行。
+
+(add-hook 'comint-output-filter-functions
+      'comint-watch-for-password-prompt)
+;;当你在shell、telnet、w3m等模式下时，必然碰到过要输入密码的情况,此时加密显出你的密码
+
+(setq make-backup-files nil)
+;; 设定不产生备份文件
+
+;;(setq auto-save-mode nil)
+;;自动保存模式
+
+(setq-default make-backup-files nil)
+;; 不生成临时文件
+
+(put 'set-goal-column 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'LaTeX-hide-environment 'disabled nil)
+;;把这些缺省禁用的功能打开。
+
+;;允许emacs和外部其他程序的粘贴
+(setq x-select-enable-clipboard t)
+
+(setq user-full-name "赖睿航")
+(setq user-mail-address "lairuihangdongdong@qq.com")
+;;设置有用的个人信息,这在很多地方有用。
+
+(setq require-final-newline t)
+;; 自动的在文件末增加一新行
+
+(setq-default transient-mark-mode t)
+;;Non-nil if Transient-Mark mode is enabled.
+
+(setq Man-notify-method 'pushy)
+;; 当浏览 man page 时，直接跳转到 man buffer。
+
+(global-set-key [home] 'beginning-of-line)
+(global-set-key [end] 'end-of-line)
+;;设置home键指向buffer开头，end键指向buffer结尾
+
+(global-set-key [f1] 'manual-entry)
+(global-set-key [C-f1] 'info )
+
+;;(global-set-key [f2] 'emacs-wiki-find-file)
+;;打开wiki
+
+;;(global-set-key [f3] 'repeat-complex-command)
+
+(defun du-onekey-compile ()
+  (interactive)
+  (compile (format "g++ -o %s %s -g -lm -Wall"  (file-name-sans-extension (buffer-name))(buffer-name))))
+(global-set-key [f9] 'du-onekey-compile)
+
+(defun compile-c++11 ()
+  (interactive)
+  (compile (format "g++ -o %s %s -g -lm -Wall -std=c++11"  (file-name-sans-extension (buffer-name))(buffer-name))))
+(global-set-key [C-f9] 'compile-c++11)
+;; f9, 保存所有文件然后编译当前窗口文件
+
+(global-set-key [f6] 'gud-gdb)
+(global-set-key [f7] 'gdb-many-windows)
+
+(defun open-eshell-other-buffer ()
+  "Open eshell in other buffer"
+  (interactive)
+  (split-window-vertically)
+  (eshell))
+;;(global-set-key [(f8)] 'open-eshell-other-buffer)
+;;(global-set-key [C-f8] 'eshell)
+;;目的是开一个shell的小buffer，用于更方便地测试程序(也就是运行程序了)，我经常会用到。
+;;f8就是另开一个buffer然后打开shell，C-f8则是在当前的buffer打开shell
+
+(setq speedbar-show-unknown-files t);;可以显示所有目录以及文件
+(setq dframe-update-speed nil);;不自动刷新，手动 g 刷新
+(setq speedbar-update-flag nil)
+(setq speedbar-use-images nil);;不使用 image 的方式
+(setq speedbar-verbosity-level 0)
+
+;;(global-set-key [f9] 'speedbar)
+;;设置f9调用speedbar命令
+;;使用 n 和 p 可以上下移动，
+;; + 展开目录或文件进行浏览，- 收缩，RET 访问目录或文件，g 更新 speedbar。
+
+(setq dired-recursive-copies 'top)
+(setq dired-recursive-deletes 'top)
+;;让 dired 可以递归的拷贝和删除目录。
+;;(global-set-key [C-f9] 'dired)
+;;设置[C-f9]为调用dired命令
+
+(global-set-key [C-z] 'undo)
+;;设置C-z为撤销
+(global-set-key [C-s] 'save)
+(setq time-stamp-active t)
+(setq time-stamp-warn-inactive t)
+(setq time-stamp-format "%:y-%02m-%02d %3a %02H:%02M:%02S chunyu")
+;; 设置时间戳，标识出最后一次保存文件的时间。
+
+(global-set-key (kbd "M-g") 'goto-line)
+;;设置M-g为goto-line
+
+(global-set-key (kbd "C-SPC") 'nil)
+;;取消control+space键设为mark
+
+(global-set-key (kbd "s-SPC") 'set-mark-command)
+;;用win+space键来set-mark，这样，C-SPC就可以用来调用外部输入法了。
+
+;;----------定制操作习惯结束-------------
+
+;;-------------方便编程操作设置----------------
+
+;;代码折叠
+(load-library "hideshow")
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'c++-mode-hook 'hs-minor-mode)
+(add-hook 'java-mode-hook 'hs-minor-mode)
+(add-hook 'perl-mode-hook 'hs-minor-mode)
+(add-hook 'php-mode-hook 'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+;;能把一个代码块缩起来，需要的时候再展开
+;; M-x hs-minor-mode
+;; C-c @ ESC C-s show all
+;; C-c @ ESC C-h hide all
+;; C-c @ C-s show block
+;; C-c @ C-h hide block
+;; C-c @ C-c toggle hide/show
+
+;;把c语言风格设置为k&r风格
+(add-hook 'c-mode-hook
+'(lambda ()
+(c-set-style "k&r")))
+
+(autoload 'css-mode "css-mode" "CSS editing mode" t)
+;;css-mode.el编辑css文件
+
+(autoload 'htmlize-buffer "htmlize" "HTMLize mode" t)
+;;把buffer的内容连同颜色转为html格式
+
+(autoload 'folding-mode "folding" "Folding mode" t)
+(autoload 'turn-off-folding-mode "folding" "Folding mode" t)
+(autoload 'turn-on-folding-mode "folding" "Folding mode" t)
+;;folding.el 编辑文本的一部分，其它部分折叠起来
+
+(setq auto-mode-alist
+      ;; 将文件模式和文件后缀关联起来
+      (append '(("\\.py\\'" . python-mode)
+                ("\\.s?html?\\'" . html-helper-mode)
+                ("\\.asp\\'" . html-helper-mode)
+                ("\\.phtml\\'" . html-helper-mode)
+                ("\\.css\\'" . css-mode))
+              auto-mode-alist))
+
+;;------------方便编程操作设置结束--------------------
+(set-frame-parameter (selected-frame) 'alpha (list 90 90))
+(add-to-list 'default-frame-alist (cons 'alpha (list 90 90)))
+(setq-default cursor-type 'bar)
+(show-paren-mode 1)
+;;---------透明-----------------
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
