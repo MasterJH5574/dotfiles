@@ -267,6 +267,10 @@
 '(lambda ()
 (c-set-style "k&r")))
 
+;; Support .cu/.cuh files.
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.cuh\\'" . c++-mode))
+
 (autoload 'css-mode "css-mode" "CSS editing mode" t)
 ;;css-mode.el±à¼­cssÎÄ¼þ
 
