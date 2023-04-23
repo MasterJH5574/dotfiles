@@ -81,3 +81,10 @@ inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+" 4-space indent, intelligent indent
+set shiftwidth=4 smarttab
+" only use space, never tab character
+set expandtab
+" tab character width to 8
+set tabstop=8 softtabstop=0
